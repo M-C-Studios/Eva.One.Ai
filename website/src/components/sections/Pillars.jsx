@@ -108,12 +108,17 @@ const Pillars = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: idx * 0.05 }}
               viewport={{ once: true, margin: "-50px" }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              className="glass p-8 flex flex-col items-start group cursor-pointer relative overflow-hidden h-full border-brand-white/5 hover:border-brand-white/20 transition-colors"
+              whileHover={{ 
+                y: -8, 
+                boxShadow: `0 0 40px -10px ${division.color}60`,
+                borderColor: `${division.color}40`,
+                transition: { duration: 0.2 } 
+              }}
+              className="glass p-8 flex flex-col items-start group cursor-pointer relative overflow-hidden h-full border-brand-white/5 transition-all duration-300"
             >
               {/* Animated Background Pulse */}
               <div 
-                className="absolute -top-10 -right-10 w-40 h-40 opacity-0 group-hover:opacity-20 transition-opacity duration-700 rounded-full blur-[40px] pointer-events-none"
+                className="absolute -top-10 -right-10 w-40 h-40 opacity-0 group-hover:opacity-30 transition-opacity duration-700 rounded-full blur-[60px] pointer-events-none"
                 style={{ backgroundColor: division.color }}
               ></div>
               

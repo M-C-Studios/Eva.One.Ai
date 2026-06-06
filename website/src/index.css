@@ -8,13 +8,13 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-widest uppercase;
+    @apply font-display tracking-display uppercase;
   }
 }
 
 @layer components {
   .glass {
-    @apply bg-brand-white/10 backdrop-blur-md border border-brand-white/10 rounded-xl;
+    @apply bg-brand-white/5 backdrop-blur-xl border border-brand-white/10 rounded-xl;
   }
 
   .btn-primary {

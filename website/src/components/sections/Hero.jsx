@@ -26,7 +26,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="text-5xl md:text-7xl lg:text-9xl font-display mb-6 tracking-tighter leading-tight"
+          className="text-5xl md:text-7xl lg:text-9xl font-display mb-6 tracking-display leading-tight"
         >
           MENTALLY CREATIVE <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-brand-violet to-brand-pink">STUDIOS</span>
@@ -36,9 +36,9 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-          className="text-brand-slate text-lg md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed font-light"
+          className="text-brand-slate text-lg md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed font-light uppercase tracking-[0.2em]"
         >
-          The Creative Intelligence Ecosystem. Expanding human capability, not replacing human creativity.
+          The Creative Intelligence Ecosystem.
         </motion.p>
 
         <motion.div 
