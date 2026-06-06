@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { useScroll } from '../../hooks/useScroll';
 import logo from '../../assets/mcs-logo-concept.png';
 
