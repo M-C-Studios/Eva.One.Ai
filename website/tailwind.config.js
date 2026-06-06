@@ -21,6 +21,9 @@ export default {
       fontFamily: {
         display: ["Michroma", "sans-serif"],
         body: ["Inter", "sans-serif"],
+      },
+      letterSpacing: {
+        display: "0.1em",
       }
     },
   },
