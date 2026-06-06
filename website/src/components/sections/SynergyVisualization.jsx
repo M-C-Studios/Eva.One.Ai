@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { 
   Cpu, 
-  Database, 
+  FlaskConical, 
   MessageSquare, 
   Workflow, 
   TrendingUp, 
