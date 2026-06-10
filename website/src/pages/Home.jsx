@@ -3,6 +3,7 @@ import Footer from '../components/layout/Footer';
 import Hero from '../components/sections/Hero';
 import Pillars from '../components/sections/Pillars';
 import Vision from '../components/sections/Vision';
+import UpdateLog from '../components/sections/UpdateLog';
 import DashboardPreview from '../components/sections/DashboardPreview';
 import SynergyVisualization from '../components/sections/SynergyVisualization';
 
@@ -16,6 +17,7 @@ const Home = ({ onContactOpen }) => {
         <SynergyVisualization />
         <DashboardPreview />
         <Vision />
+        <UpdateLog />
       </main>
       <Footer onContactOpen={onContactOpen} />
     </div>

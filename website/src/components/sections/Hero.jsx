@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import SafeImage from '../SafeImage';
 import heroImg from '../../assets/neural-nexus-hero.png';
 
 const Hero = () => {
@@ -7,7 +8,7 @@ const Hero = () => {
     <section className="relative min-h-screen pt-32 pb-20 px-6 flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
+        <SafeImage 
           src={heroImg} 
           alt="Neural Nexus Hero" 
           className="w-full h-full object-cover opacity-40 scale-105"
