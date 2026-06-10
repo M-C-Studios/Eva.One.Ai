@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import SafeImage from '../SafeImage';
 import dashboardImg from '../../assets/eva-one-dashboard-preview.png';
 
 const DashboardPreview = () => {
@@ -42,7 +43,7 @@ const DashboardPreview = () => {
           >
             <div className="absolute -inset-4 bg-gradient-to-r from-brand-cyan/20 to-brand-violet/20 blur-3xl rounded-full opacity-50"></div>
             <div className="relative glass p-2 rounded-2xl border-brand-white/10 overflow-hidden shadow-2xl">
-              <img 
+              <SafeImage 
                 src={dashboardImg} 
                 alt="EvaOne Dashboard Preview" 
                 className="rounded-xl w-full h-auto"

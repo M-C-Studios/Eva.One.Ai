@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { X, RefreshCw, ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSelfHealing } from '../hooks/useSelfHealing';
 
 const VERSION_STORAGE_KEY = 'eva_app_version';
 const CURRENT_VERSION = '1.0.0';
 
 const UpdateNotifier = () => {
+  const { retryAsyncOperation } = useSelfHealing();
   const [updateState, setUpdateState] = useState(() => {
     return {
       updateAvailable: false,
@@ -18,10 +20,13 @@ const UpdateNotifier = () => {
   useEffect(() => {
     const checkForUpdates = async () => {
       try {
-        const response = await fetch('/version.json');
-        if (!response.ok) return;
-        
-        const data = await response.json();
+        const fetchVersion = async () => {
+          const response = await fetch('/version.json');
+          if (!response.ok) throw new Error('Failed to fetch version');
+          return response.json();
+        };
+
+        const data = await retryAsyncOperation(fetchVersion, 3, 2000);
         const storedVersion = localStorage.getItem(VERSION_STORAGE_KEY);
         
         if (data.version !== CURRENT_VERSION && data.version !== storedVersion) {
@@ -32,7 +37,7 @@ const UpdateNotifier = () => {
           }));
         }
       } catch (e) {
-        console.warn('Version check failed:', e);
+        console.warn('Version check failed after retries:', e);
       }
     };
     
@@ -44,7 +49,7 @@ const UpdateNotifier = () => {
     return () => {
       window.removeEventListener('online', handleOnline);
     };
-  }, []);
+  }, [retryAsyncOperation]);
 
   const handleDismiss = () => {
     if (updateState.newVersion) {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { X, Send, Mail, Inbox, Trash2, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -39,25 +39,39 @@ const ContactModal = ({ isOpen, onClose }) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    await new Promise(resolve => setTimeout(resolve, 500));
+    try {
+      // Simulated "local API" endpoint using fetch handler
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      }).catch(() => {
+        // Fallback for when the endpoint doesn't actually exist in the dev server
+        // This simulates a successful local storage-based API
+        return { ok: true, json: async () => ({ success: true }) };
+      });
 
-    const message = {
-      id: Date.now().toString(),
-      ...formData,
-      status: 'pending',
-      timestamp: new Date().toISOString()
-    };
+      const message = {
+        id: Date.now().toString(),
+        ...formData,
+        status: 'pending',
+        timestamp: new Date().toISOString()
+      };
 
-    saveMessage(message);
-    
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setIsSubmitting(false);
-    setSubmitSuccess(true);
-    
-    setTimeout(() => {
-      setSubmitSuccess(false);
-      setActiveTab('inbox');
-    }, 1500);
+      saveMessage(message);
+      
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+      
+      setTimeout(() => {
+        setSubmitSuccess(false);
+        setActiveTab('inbox');
+      }, 1500);
+    } catch (error) {
+      console.error('Contact submission failed:', error);
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
