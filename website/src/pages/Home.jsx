@@ -6,7 +6,7 @@ import Vision from '../components/sections/Vision';
 import DashboardPreview from '../components/sections/DashboardPreview';
 import SynergyVisualization from '../components/sections/SynergyVisualization';
 
-const Home = () => {
+const Home = ({ onContactOpen }) => {
   return (
     <div className="min-h-screen bg-brand-void text-brand-white font-body overflow-x-hidden">
       <Header />
@@ -17,7 +17,7 @@ const Home = () => {
         <DashboardPreview />
         <Vision />
       </main>
-      <Footer />
+      <Footer onContactOpen={onContactOpen} />
     </div>
   );
 };
